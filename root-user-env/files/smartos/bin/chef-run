@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Kicks a chef-solo run off by restarting chef if it's online or clears the service
+# if it is in maintenance.
+#
+# Copyright 2012 Jacques Marneweck.  All rights reserved.
+#
+
+svcs -Ho state -p chef-solo | grep "^online$" && svcadm restart chef-solo || svcadm clear chef-solo

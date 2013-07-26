@@ -1,0 +1,31 @@
+[user]
+  email = jacques@powertrip.co.za
+  name = Jacques Marneweck
+
+[alias]
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  lg = log -p
+  lgg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  tube = log --graph --pretty=oneline --abbrev-commit --decorate --color
+  outgoing = ! git log --name-status $(git merge-base HEAD origin/master)..HEAD
+  outams = ! git log --name-status $(git merge-base HEAD amsterdam/master)..HEAD
+
+[core]
+  autocrlf = input
+  editor = vim
+
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+
+[branch]
+  autosetuprebase = always
+
+[push]
+  default = simple

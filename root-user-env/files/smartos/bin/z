@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+# Copyright (c) 2012-2013 Jacques Marneweck.  All rights reserved.
+#
+
+if [[ "$1" == "-v" ]]; then
+    shift;
+    export PS4='[\D{%FT%TZ}] ${BASH_SOURCE}:${LINENO}: ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
+    set -o xtrace
+fi
+set -o errexit
+set -o pipefail
+
+if [ -z $1 ]; then
+  echo "usage specify the recipe in the bsdbase cookbook"
+  exit 1
+fi
+
+COOKBOOK=$(dirname `pwd` | cut -d'/' -f 5)
+RECIPE=$(echo $1 | gsed '/\.rb$/s/.rb$//g')
+
+(cd /var/chef && /opt/chef/bin/chef-solo -j host.json -l 'debug' -o ${COOKBOOK}::${RECIPE})
