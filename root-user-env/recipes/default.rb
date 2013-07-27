@@ -7,6 +7,16 @@
 # All rights reserved - Do Not Redistribute
 #
 
+execute "copy-roots-homedir" do
+  command "cp -rP /root /opt/root"
+  not_if "test -d /opt/root"
+end
+
+execute "mount-via-lofs-root" do
+  command "mount -O -F lofs /opt/root /root"
+  not_if "mount | grep '^/root'"
+end
+
 directory "/root" do
   owner "root"
   group "root"
