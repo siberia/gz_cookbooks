@@ -53,7 +53,6 @@ end
 
 %w{
   bin/chef-run
-  bin/mbuffer
   bin/z
 }.each do |f|
   cookbook_file "/root/#{f}" do
