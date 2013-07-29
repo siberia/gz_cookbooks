@@ -73,3 +73,7 @@ end
 #     mode "0600"
 #   end
 #end
+
+link "/root/bin/mbuffer" do
+  to "/opt/custom/bin/mbuffer"
+end
