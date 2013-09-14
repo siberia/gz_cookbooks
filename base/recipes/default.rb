@@ -15,4 +15,5 @@ directory "/opt/custom/bin" do
   action :create
 end
 
+include_recipe "base::arcstat"
 include_recipe "base::mbuffer"
