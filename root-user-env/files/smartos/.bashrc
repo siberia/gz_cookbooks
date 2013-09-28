@@ -51,3 +51,18 @@ svclog() {
 svclogf() {
   /usr/bin/tail -f `svcs -L $1`
 }
+
+alias vms='vmadm list -o uuid,type,ram,state,alias,nics.0.ip -s alias'
+
+zl(){
+  UUID=$(vmadm lookup -1 alias=$1)
+  if [[ -z $UUID ]]; then
+    UUID=$(vmadm lookup -1 alias=$1.jfk)
+  fi
+
+  if [[ -z $UUID ]]; then
+    echo "ERROR: Unknown zone '$1'"
+  else
+    zlogin $UUID
+  fi
+}
