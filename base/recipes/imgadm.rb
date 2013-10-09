@@ -24,6 +24,7 @@ datasets = [
   '4b4c141e-1fb4-11e3-a10e-6f99cfdf8806',  # stm-developer-13.2.0
   'b83f8276-1fdd-11e3-989b-4bddb088a8a0',  # base-13.2.1
   '17c98640-1fdb-11e3-bf51-3708ce78e75a',  # base64-13.2.1
+  'ffed3d9e-2c2f-11e3-9a12-bf5267821b0b',  # nodejs-13.2.1
 ].each do |dataset|
   execute "install-dataset-#{dataset}" do
     command "imgadm import #{dataset}"
