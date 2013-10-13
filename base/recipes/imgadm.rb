@@ -25,6 +25,9 @@ datasets = [
   'b83f8276-1fdd-11e3-989b-4bddb088a8a0',  # base-13.2.1
   '17c98640-1fdb-11e3-bf51-3708ce78e75a',  # base64-13.2.1
   'ffed3d9e-2c2f-11e3-9a12-bf5267821b0b',  # nodejs-13.2.1
+  'dac2ad6e-2aa5-11e3-885f-8fd408fc6a82',  # standard-13.2.1
+  'b779b49a-29e4-11e3-9b1d-0b0b41ccdcad',  # standard64-13.2.1
+  'd2409672-29f3-11e3-ba86-6f782523cb41',  # mongodb-13.2.1
 ].each do |dataset|
   execute "install-dataset-#{dataset}" do
     command "imgadm import #{dataset}"
