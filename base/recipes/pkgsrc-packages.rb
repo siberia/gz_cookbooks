@@ -10,6 +10,7 @@
 %w{
   gsed
   scmgit
+  screen
 }.each do |p|
   package p do
     action :install
