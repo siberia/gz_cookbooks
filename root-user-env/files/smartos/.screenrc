@@ -1,0 +1,10 @@
+# $Id: .screenrc 116 2008-07-31 18:34:58Z jacques $
+#unsetenv SSH_AUTH_SOCK
+#setenv SSH_AUTH_SOCK /Users/jacques/.ssh/agent-sock
+escape ^Gg
+startup_message off
+#deflogin off
+vbell off
+altscreen on
+defscrollback 1024
+caption always '%{-s} %H %{-} %Lw %{-s} %=%l  %0c %D %d %M %{-}'

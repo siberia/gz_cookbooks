@@ -41,6 +41,7 @@ end
   .chef/knife.rb
   .gitconfig
   .profile
+  .screenrc
   .vimrc
 }.each do |f|
   cookbook_file "/root/#{f}" do
