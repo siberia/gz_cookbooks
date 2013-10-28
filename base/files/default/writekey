@@ -1,0 +1,94 @@
+#!/usr/bin/bash
+#
+# CDDL HEADER START
+#
+# The contents of this file are subject to the terms of the
+# Common Development and Distribution License, Version 1.0 only
+# (the "License").  You may not use this file except in compliance
+# with the License.
+#
+# You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
+# or http://www.opensolaris.org/os/licensing.
+# See the License for the specific language governing permissions
+# and limitations under the License.
+#
+# When distributing Covered Code, include this CDDL HEADER in each
+# file and include the License file at usr/src/OPENSOLARIS.LICENSE.
+# If applicable, add the following below this CDDL HEADER, with the
+# fields enclosed by brackets "[]" replaced with your own identifying
+# information: Portions Copyright [yyyy] [name of copyright owner]
+#
+# CDDL HEADER END
+#
+# Copyright 2013 Jacques Marneweck.  All rights reserved.
+# Use is subject to license terms.
+#
+# Fetches SmartOS Platform Image and writes them to the usbkey
+#
+
+set -o errexit
+set -o pipefail
+export PS4='[\D{%FT%TZ}] ${BASH_SOURCE}:${LINENO}: ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
+set -o xtrace
+
+IMAGE=$1
+if [ -z $IMAGE ]; then
+  echo "Usage: ${0} BUILD"
+  echo "e.g. ${0} 20130419T073558Z"
+  exit 1
+fi
+
+if [ ! -d /var/tmp/usbimg ]; then
+  mkdir /var/tmp/usbimg  
+fi
+
+cd /var/tmp/usbimg
+
+#
+# Download July 2013 and later releases from Manta in us-east-1
+# else from download.joyent.com for older builds.
+#
+if [[ $(echo ${IMAGE} | cut -c 1-6) -ge 201307 ]]; then
+  wget --no-check-cert https://us-east.manta.joyent.com/Joyent_Dev/public/SmartOS/${IMAGE}/smartos-${IMAGE}-USB.img.bz2
+  if [ $? -eq 1 ]; then
+    echo "Unable to download the SmartOS ${IMAGE} USB Key build from Manta."
+    exit 2
+  fi
+
+  #
+  # Check md5 hash of the image
+  #
+  md5=$(curl -k -s https://us-east.manta.joyent.com/Joyent_Dev/public/SmartOS/${IMAGE}/md5sums.txt | grep "smartos-${IMAGE}-USB.img.bz2$" | cut -d' ' -f 1)
+  if [[ $md5 != $(openssl dgst -md5 smartos-${IMAGE}-USB.img.bz2 | awk '{ print $2 }') ]]; then
+    echo "md5 hash for smartos-${IMAGE}-USB.img.bz2 does not match."
+    exit 1
+  fi
+else
+  wget --no-check-cert https://download.joyent.com/pub/iso/smartos-${IMAGE}-USB.img.bz2
+  if [ $? -eq 1 ]; then
+    echo "Unable to download the SmartOS ${IMAGE} USB Key build from download.joyent.com."
+    exit 2
+  fi
+
+  #
+  # Check md5 hash of the image
+  #
+  md5=$(curl -k -s https://download.joyent.com/pub/iso/md5sums.txt | grep "smartos-${IMAGE}-USB.img.bz2$" | cut -d' ' -f 1)
+  if [[ $md5 != $(openssl dgst -md5 smartos-${IMAGE}-USB.img.bz2 | awk '{ print $2 }') ]]; then
+    echo "md5 hash for smartos-${IMAGE}-USB.img.bz2 does not match."
+    exit 1
+  fi
+fi
+
+bunzip2 smartos-${IMAGE}-USB.img.bz2
+if [ $? -eq 1 ]; then
+  echo "Cannot unzip usb image."
+  exit 3
+fi
+
+drives=$(diskinfo -H | nawk 'BEGIN { FS = "[\t]*|[\t]+" } { if ($6 == "yes" && $1 == "USB") print $2 }')
+for drive in ${drives[@]}
+do
+  echo "Writing to ${drive}"
+  dd if=/var/tmp/usbimg/smartos-${IMAGE}-USB.img  of=${drive} bs=1024k
+done
