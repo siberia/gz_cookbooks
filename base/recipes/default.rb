@@ -15,5 +15,9 @@ directory "/opt/custom/bin" do
   action :create
 end
 
-include_recipe "base::arcstat"
+#include_recipe "base::arcstat"
+include_recipe "base::imgadm"
 include_recipe "base::mbuffer"
+include_recipe "base::pkgsrc"
+include_recipe "base::pkgsrc-packages"
+include_recipe "base::writekey"
