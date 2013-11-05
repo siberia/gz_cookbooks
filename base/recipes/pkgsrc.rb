@@ -16,3 +16,7 @@ execute "untar-pkgsrc-tarball" do
   command "(cd / && gtar -zxf #{Chef::Config[:file_cache_path]}/bootstrap-#{node['base']['pkgsrc_version']}-#{node['base']['pkgsrc_arch']}.tar.gz)"
   not_if "test -d /opt/local"
 end
+
+execute "pkgin-update" do
+  command "pkgin -yf up"
+end
