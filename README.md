@@ -1,7 +1,7 @@
 # SmartOS Global Zone Cookbooks
 
 This is unpublished proprietary cookbooks for Siberia.  Usage of these
-cookbooks are subject to licening terms.
+cookbooks are subject to licencing terms.
 
 ## License and Authors
 
