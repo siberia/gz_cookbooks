@@ -19,4 +19,4 @@ fi
 COOKBOOK=$(dirname `pwd` | cut -d'/' -f 5)
 RECIPE=$(echo $1 | gsed '/\.rb$/s/.rb$//g')
 
-(cd /var/chef && /opt/chef/bin/chef-solo -j host.json -l 'debug' -o ${COOKBOOK}::${RECIPE})
+(cd /var/chef && /opt/chef/bin/chef-solo --config /var/chef/solo.rb -j host.json -l 'debug' -o ${COOKBOOK}::${RECIPE})
