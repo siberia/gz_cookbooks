@@ -53,6 +53,7 @@ svclogf() {
 }
 
 alias vms='vmadm list -o uuid,type,ram,state,alias,nics.0.ip -s alias'
+alias vmsi='vmadm list -o uuid,type,ram,state,alias,nics.0.ip -s nics.0.ip'
 
 zl(){
   UUID=$(vmadm lookup -1 alias=$1)
