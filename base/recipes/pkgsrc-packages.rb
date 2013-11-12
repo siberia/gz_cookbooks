@@ -9,6 +9,7 @@
 
 %w{
   gsed
+  libyaml
   scmgit
   screen
 }.each do |p|
