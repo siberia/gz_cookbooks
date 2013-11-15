@@ -8,6 +8,6 @@
 #
 
 default['base'] = {
-  'pkgsrc_version' => '2013Q2',
+  'pkgsrc_version' => '2013Q3',
   'pkgsrc_arch' => 'i386'
 }
