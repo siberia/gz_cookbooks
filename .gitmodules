@@ -1,0 +1,3 @@
+[submodule "imagetools"]
+	path = imagetools
+	url = git@github.com:siberia-cookbooks/imagetools.git
