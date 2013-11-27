@@ -33,6 +33,10 @@ datasets = [
   '56a0655c-3cc6-11e3-9c79-5701599fdf05',  # standard-13.2.3
   'a1d74530-4212-11e3-8a71-a7247697c8f2',  # multiarch-13.3.0
   '7fa676e2-4709-11e3-916d-83ffcd857200',  # sngl-13.3.0
+  '753ceee6-5372-11e3-8f4e-f79c1154e596',  # base-13.3.0
+  '87b9f4ac-5385-11e3-a304-fb868b82fe10',  # base64-13.3.0
+  '4aec529c-55f9-11e3-868e-a37707fcbe86',  # multiarch-13.3.1
+  '75ec04ce-55fe-11e3-9252-afb57e4da368',  # sngl-13.3.1
 ].each do |dataset|
   execute "install-dataset-#{dataset}" do
     command "imgadm import #{dataset}"
