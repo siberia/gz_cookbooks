@@ -2,7 +2,7 @@
 # Cookbook Name:: base
 # Recipe:: imgadm
 #
-# Copyright 2013, Jacques Marneweck
+# Copyright 2013-2014, Jacques Marneweck
 #
 # All rights reserved - Do Not Redistribute
 #
