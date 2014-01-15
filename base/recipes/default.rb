@@ -19,6 +19,7 @@ directory "/opt/custom/smf" do
   action :create
 end
 
+include_recipe "base::ntp"
 include_recipe "base::delegate"
 include_recipe "base::imgadm"
 include_recipe "base::mbuffer"
