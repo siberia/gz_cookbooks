@@ -6,7 +6,7 @@ cookbooks are subject to licencing terms.
 ## License and Authors
 
 ```
-Copyright (c) 2012-2013 Jacques Marneweck. All rights reserved.
+Copyright (c) 2012-2014 Jacques Marneweck. All rights reserved.
 
 
 THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF JACQUES MARNEWECK.
