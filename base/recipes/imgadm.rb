@@ -40,6 +40,9 @@ datasets = [
   'fb6e7820-60ee-11e3-93b6-7f34ea3f2616',  # percona-13.3.0
   'dee73ee2-69ab-11e3-b593-a3f1f80ef403',  # base-13.3.1
   'c353c568-69ad-11e3-a248-db288786ea63',  # base64-13.3.1
+  '2b683a82-a066-11e3-97ab-2faa44701c5a',  # base-13.4.0
+  'ff86eb8a-a069-11e3-ae0e-4f3c8983a91c',  # base64-13.4.0
+  '835e27b2-a47e-11e3-9eb6-e78ef6d1ee8f',  # postgresql-13.3.1
 ].each do |dataset|
   execute "install-dataset-#{dataset}" do
     command "imgadm import #{dataset}"
