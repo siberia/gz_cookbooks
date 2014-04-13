@@ -15,6 +15,6 @@ default['base'] = {
       '2.pool.ntp.org'
     ]
   },
-  'pkgsrc_version' => '2013Q3',
+  'pkgsrc_version' => '2013Q4',
   'pkgsrc_arch' => 'i386'
 }
