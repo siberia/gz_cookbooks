@@ -43,6 +43,9 @@ datasets = [
   '2b683a82-a066-11e3-97ab-2faa44701c5a',  # base-13.4.0
   'ff86eb8a-a069-11e3-ae0e-4f3c8983a91c',  # base64-13.4.0
   '835e27b2-a47e-11e3-9eb6-e78ef6d1ee8f',  # postgresql-13.3.1
+  '7241e29a-a07b-11e3-9a5c-53df1db058c4',  # base-13.4.1
+  'c3321aac-a07c-11e3-9430-fbb1cc12d1df',  # base64-13.4.1
+  'edd43ca8-c0ee-11e3-a027-c3a9f2cd2f6a',  # stm-developer-13.4.1
 ].each do |dataset|
   execute "install-dataset-#{dataset}" do
     command "imgadm import #{dataset}"
