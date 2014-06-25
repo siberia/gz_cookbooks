@@ -3,6 +3,10 @@
 These cookbooks make up a large chunk of the cookbooks that is used by
 Kaizen Garden and previously on my personal SmartOS Compute Node.
 
+It is assumed that you will install additional software and tools
+(i.e. your raid controller management tools like MegaCli after
+forking and submoduling in your hardware cookbook.)
+
 ## License and Authors
 
 ```
