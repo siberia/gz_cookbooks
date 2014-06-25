@@ -1,6 +1,6 @@
 name             'root-user-env'
-maintainer       'YOUR_COMPANY_NAME'
-maintainer_email 'YOUR_EMAIL'
+maintainer       'Jacques Marneweck'
+maintainer_email 'jacques@powertrip.co.za'
 license          'All rights reserved'
 description      'Installs/Configures root-user-env'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
